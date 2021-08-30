@@ -8,17 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class MenuItem extends Model
 {
-
-
-    public function mainMenu()
+    public function parent()
     {
         //self reffering
         return $this->hasOne($this, 'id', 'parent_id');
     }
 
-    public function subMenu()
+
+    public function children()
     {
         //self reffering
-        return $this->hasMany($this, 'parent_id', 'id')->with('subMenu');
+        return $this->hasMany($this, 'parent_id', 'id')->with('children');
     }
 }

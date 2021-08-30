@@ -102,6 +102,12 @@ class EventsController extends BaseController
     ]
      */
 
+    public function getWarmupEvents()
+    {
+        $warmupEvents = Event::get();
+        return $warmupEvents;
+    }
+
     public function getEventsWithWorkshops()
     {
         $events = Event::with('workshops')->get();
