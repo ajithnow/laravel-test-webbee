@@ -188,6 +188,7 @@ class EventsController extends BaseController
         $events = Event::with('workshops')->whereHas(
             'workshops',
             function ($query) {
+                //Check for Future Events
                 $query->where('start', '>', Carbon::now()->toDateTimeString());
             }
         )->get();
